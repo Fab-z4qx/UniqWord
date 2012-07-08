@@ -25,7 +25,7 @@ obj/%.o: src/%.cpp
 	$(CC) $(CFLAGS) $< -o $@ 
 
 $(EXECUTABLE) : $(OBJECTS) 
-	   $(CC) $(OBJECTS)  $(CFLAGS) -o $(PROGNAME)
+	   $(CC) -o $(PROGNAME) $(OBJECTS)  
 	   $(LN) $(PROGNAME) $(patsubst bin/%,%,$(PRGNAME))
 
 #.cpp.o: 
