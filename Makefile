@@ -12,7 +12,7 @@ LN =  ln -fs
 CFLAGS =  -c -std=gnu++0x -s -O3 -DNDEBUG 
 #LD_FLAGS = 
 
-EXECUTABLE = wuniq
+EXECUTABLE = zuniqw
 PROGNAME =   bin/$@
 #OBJECTS =    $(SOURCES:.cpp=.o)
 
