@@ -45,15 +45,15 @@ unsigned long  getMemTotal(void)
       cout << "removed %      : " << (removed/(double)total_lines)*100.0 << endl; \
       cout << "Hash entries   : " <<  hash_entries << endl;   		              \
    						                                                          \
-   }while(0)
+}while(0)
 
 int process(string s_in, string s_out)
 {
-   int i=0;
-   char buffer[50];
-   FILE *in, *out;
+	int i=0;
+    char buffer[50];
+    FILE *in, *out;
     
-   Mymap mot_unique;
+    Mymap mot_unique;
 
     if((in  = fopen(s_in.c_str(), "r")) == NULL)
 	{
@@ -70,30 +70,28 @@ int process(string s_in, string s_out)
         int start = clock();
         while(fgets(buffer, sizeof(buffer), in) != NULL)
         {
-                 if ( mot_unique.find (buffer) == mot_unique.end() ) // si le mot n'est pas present 
-                 {
-	    	           mot_unique.insert(Mymap::value_type(buffer,i)); 
-                       fputs(buffer, out);
-                       hash_entries++;
-                 }
-                 else
-                 {
-                        removed++;
-                 } 
+        	if ( mot_unique.find (buffer) == mot_unique.end() ) // si le mot n'est pas present 
+            {
+	    	  	mot_unique.insert(Mymap::value_type(buffer,i)); 
+                fputs(buffer, out);
+                hash_entries++;
+            }
+           else
+               removed++;
 
-                 if(i%1000000 == 0)
-                 {
-                        PRINT_INFOS();
-						// timer 
-                        cout << "10000000 Loops : " << ((clock() - start) / (double)CLOCKS_PER_SEC  )<< "s " << endl << endl;
-                        start = clock(); //reset time 
-                 }
+           if(i%1000000 == 0)
+           {
+			   PRINT_INFOS();
+					// timer 
+               cout << "10000000 Loops : " << ((clock() - start) / (double)CLOCKS_PER_SEC  )<< "s " << endl << endl;
+               start = clock(); //reset time 
+		   }
      
 		i++; total_lines++; 
         }
   
-fclose(in);
-fclose(out);
+ fclose(in);
+ fclose(out);
 
 return 0;
 }
