@@ -49,7 +49,7 @@ unsigned long  getMemTotal(void)
 
 int process(string s_in, string s_out)
 {
-	int i=0;
+    int i=0;
     char buffer[50];
     FILE *in, *out;
     
@@ -59,7 +59,7 @@ int process(string s_in, string s_out)
 	{
 		cout << "Erreur d'ouverture de : " << s_in << endl;
         exit(EXIT_FAILURE);
-    }
+	}
 
     if(( out = fopen(s_out.c_str(), "w")) == NULL)
 	{
@@ -72,7 +72,7 @@ int process(string s_in, string s_out)
         {
         	if ( mot_unique.find (buffer) == mot_unique.end() ) // si le mot n'est pas present 
             {
-	    	  	mot_unique.insert(Mymap::value_type(buffer,i)); 
+				mot_unique.insert(Mymap::value_type(buffer,i)); 
                 fputs(buffer, out);
                 hash_entries++;
             }
@@ -81,9 +81,8 @@ int process(string s_in, string s_out)
 
            if(i%1000000 == 0)
            {
-			   PRINT_INFOS();
-					// timer 
-               cout << "10000000 Loops : " << ((clock() - start) / (double)CLOCKS_PER_SEC  )<< "s " << endl << endl;
+				PRINT_INFOS(); 
+			   cout << "10000000 Loops : " << ((clock() - start) / (double)CLOCKS_PER_SEC  )<< "s " << endl << endl;
                start = clock(); //reset time 
 		   }
      
